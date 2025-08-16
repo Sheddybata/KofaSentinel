@@ -45,90 +45,97 @@ const Receipt: React.FC<ReceiptProps> = ({ entry, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto receipt-print">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 z-50">
+      <div className="bg-white rounded-lg shadow-2xl w-full max-w-sm max-h-[90vh] overflow-y-auto receipt-print">
         {/* Receipt Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white p-6 rounded-t-lg text-center">
-          <div>
-            <h1 className="text-2xl font-bold mb-2">University of Maiduguri</h1>
-            <h2 className="text-xl font-semibold">Teaching Hospital (UMTH)</h2>
+        <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white p-3 rounded-t-lg text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <img 
+              src="/UMTH lgog.jpg" 
+              alt="UMTH Logo" 
+              className="w-8 h-8 rounded-full shadow-sm"
+            />
+            <div>
+              <h1 className="text-lg font-bold">University of Maiduguri</h1>
+              <h2 className="text-sm font-semibold">Teaching Hospital (UMTH)</h2>
+            </div>
           </div>
-          <p className="text-sm opacity-90">Vehicle Entry Receipt</p>
+          <p className="text-xs opacity-90">Vehicle Entry Receipt</p>
         </div>
 
         {/* Receipt Content */}
-        <div className="p-6 space-y-4">
+        <div className="p-3 space-y-2">
           {/* Receipt Number */}
-          <div className="border-b border-gray-200 pb-3">
+          <div className="border-b border-gray-200 pb-2">
             <div className="flex justify-between items-center">
-              <span className="text-gray-600 font-medium">Receipt No:</span>
-              <span className="font-mono text-sm bg-gray-100 px-2 py-1 rounded">
+              <span className="text-gray-600 font-medium text-xs">Receipt No:</span>
+              <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">
                 {generateReceiptNumber()}
               </span>
             </div>
           </div>
 
           {/* Date and Time */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2">
             <div>
-              <span className="text-gray-600 font-medium">Date:</span>
-              <p className="font-semibold">{formatDate(entry.timestamp)}</p>
+              <span className="text-gray-600 font-medium text-xs">Date:</span>
+              <p className="font-semibold text-xs">{formatDate(entry.timestamp)}</p>
             </div>
             <div>
-              <span className="text-gray-600 font-medium">Time:</span>
-              <p className="font-semibold">{formatTime(entry.timestamp)}</p>
+              <span className="text-gray-600 font-medium text-xs">Time:</span>
+              <p className="font-semibold text-xs">{formatTime(entry.timestamp)}</p>
             </div>
           </div>
 
           {/* Vehicle Details */}
-          <div className="space-y-3">
+          <div className="space-y-1">
             <div>
-              <span className="text-gray-600 font-medium">Plate Number:</span>
-              <p className="font-bold text-lg text-blue-600">{entry.plateNumber}</p>
+              <span className="text-gray-600 font-medium text-xs">Plate Number:</span>
+              <p className="font-bold text-sm text-blue-600">{entry.plateNumber}</p>
             </div>
             
             <div>
-              <span className="text-gray-600 font-medium">Vehicle Type:</span>
-              <p className="font-semibold">{entry.vehicleType}</p>
+              <span className="text-gray-600 font-medium text-xs">Vehicle Type:</span>
+              <p className="font-semibold text-xs">{entry.vehicleType}</p>
             </div>
             
             <div>
-              <span className="text-gray-600 font-medium">Driver Name:</span>
-              <p className="font-semibold">{entry.driverName}</p>
+              <span className="text-gray-600 font-medium text-xs">Driver Name:</span>
+              <p className="font-semibold text-xs">{entry.driverName}</p>
             </div>
             
             <div>
-              <span className="text-gray-600 font-medium">Purpose of Visit:</span>
-              <p className="font-semibold">{entry.purpose}</p>
+              <span className="text-gray-600 font-medium text-xs">Purpose of Visit:</span>
+              <p className="font-semibold text-xs">{entry.purpose}</p>
             </div>
           </div>
 
           {/* Security Notice */}
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-4">
-            <p className="text-sm text-yellow-800 text-center">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-2 mt-2">
+            <p className="text-xs text-yellow-800 text-center leading-tight">
               <strong>Security Notice:</strong> This receipt serves as proof of entry. 
               Please keep it safe and present it when exiting the premises.
             </p>
           </div>
 
           {/* Footer */}
-          <div className="text-center text-gray-500 text-xs pt-4 border-t border-gray-200">
+          <div className="text-center text-gray-500 text-xs pt-2 border-t border-gray-200">
             <p>Generated by UMTH Security System</p>
             <p>For inquiries, contact Security Office</p>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 p-6 pt-0">
+        <div className="flex gap-2 p-3 pt-0">
           <button
             onClick={handlePrint}
-            className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            className="flex-1 bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-xs"
           >
-            🖨️ Print Receipt
+            🖨️ Print
           </button>
           <button
             onClick={onClose}
-            className="flex-1 bg-gray-500 text-white py-3 px-4 rounded-lg hover:bg-gray-600 transition-colors font-medium"
+            className="flex-1 bg-gray-500 text-white py-2 px-3 rounded-lg hover:bg-gray-600 transition-colors font-medium text-xs"
           >
             ✕ Close
           </button>
